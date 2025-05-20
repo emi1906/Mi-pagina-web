@@ -1,24 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Mi Página</title>
-  <style>
-    body {
-      background-color: purple; 
-      font-family: arial, calibri; 
-    }
-    h1 {
-      font-size: 36px;
-      color; darkblue;
-      color: darkblue;
-    }
-    p {
-      font-size: 18px; 
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Página con Botón, Fondo, Música y Contador</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos estéticos y modernos -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80'); /* Cambia esta URL por la que desees */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .overlay {
+            background: rgba(0,0,0,0.45);
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1 {
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 3rem;
+            text-shadow: 2px 2px 10px #333;
+        }
+        .boton {
+            padding: 18px 44px;
+            font-size: 1.2rem;
+            background: linear-gradient(90deg,#3fa1f4,#005bea);
+            border: none;
+            border-radius: 30px;
+            color: #fff;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+            transition: background 0.3s, transform 0.2s;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+        .boton:hover {
+            background: linear-gradient(90deg,#005bea,#3fa1f4);
+            transform: translateY(-3px) scale(1.04);
+        }
+        .contador {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            margin-top: 20px;
+            text-shadow: 1px 1px 6px #222;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .boton { font-size: 1rem; padding: 14px 24px; }
+            .contador { font-size: 1rem; padding: 10px 16px; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Hola, soy emili</h1>
-  <p>Bienvenido a mi página personal.</p>
+    <div class="overlay"></div>
+    <div class="container">
+        <h1>Bienvenido a Mi Página</h1>
+        <button class="boton" onclick="window.location.href='https://www.ejemplo.com';">Ir a otra página</button>
+        <div class="contador" id="contador-visitas">
+            Cargando visitas...
+        </div>
+    </div>
+    <!-- Música de fondo -->
+    <audio id="musica-fondo" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop></audio>
+    <script>
+        // Contador de visitas estático por usuario (detecta una vez por visita/browser)
+        // Utiliza localStorage para guardar si ya visitó
+        const contadorElement = document.getElementById('contador-visitas');
+        const STORAGE_KEY = "mi_pagina_visitada";
+        const CONTADOR_KEY = "mi_pagina_contador";
+
+        function getVisitas() {
+            return parseInt(localStorage.getItem(CONTADOR_KEY) || "0", 10);
+        }
+
+        function setVisitas(n) {
+            localStorage.setItem(CONTADOR_KEY, n + "");
+        }
+
+        window.onload = function() {
+            let visitada = localStorage.getItem(STORAGE_KEY);
+            let visitas = getVisitas();
+
+            if (!visitada) {
+                visitas += 1;
+                setVisitas(visitas);
+                localStorage.setItem(STORAGE_KEY, "true");
+            }
+            contadorElement.textContent = `Visitas a esta página en este navegador: ${visitas}`;
+        };
+
+        // Autoplay fix para algunos navegadores móviles: inicia música tras interacción
+        const musica = document.getElementById('musica-fondo');
+        document.body.addEventListener('click', () => { musica.play().catch(()=>{}); }, { once: true });
+    </script>
 </body>
 </html>
