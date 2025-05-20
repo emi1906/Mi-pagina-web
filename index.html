@@ -1,52 +1,24 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página con contador</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-image: url('https://ejemplo.com/imagen.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <title>Mi Página</title>
+  <style>
+    body {
+      background-color: purple; 
+      font-family: arial, calibri; 
+    }
+    h1 {
+      font-size: 36px;
+      color; darkblue;
+      color: darkblue;
+    }
+    p {
+      font-size: 18px; 
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Bienvenido</h1>
-        <p>Visitas: <span id="contador">0</span></p>
-        <button onclick="window.location.href='https://emi1906.github.io/wedpage/'">Ir a otra página</button>
-    </div>
-
-    <script>
-        // Obtener el contador del almacenamiento local
-        let visitas = localStorage.getItem('contadorVisitas') || 0;
-        visitas++;
-        localStorage.setItem('contadorVisitas', visitas);
-        document.getElementById('contador').innerText = visitas;
-    </script>
+  <h1>Hola, soy emili</h1>
+  <p>Bienvenido a mi página personal.</p>
 </body>
 </html>
