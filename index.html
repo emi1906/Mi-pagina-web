@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Página con Botón, Fondo, Música y Contador</title>
+    <title>Contacto</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Estilos estéticos y modernos -->
+    <!-- Estilos modernos del index.html -->
     <style>
         body {
             margin: 0;
@@ -12,7 +12,7 @@
             min-height: 100vh;
             box-sizing: border-box;
             font-family: 'Segoe UI', Arial, sans-serif;
-            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80'); /* Cambia esta URL por la que desees */
+            background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80'); /* Igual que el index */
             background-size: cover;
             background-position: center;
             position: relative;
@@ -40,9 +40,34 @@
             font-size: 3rem;
             text-shadow: 2px 2px 10px #333;
         }
-        .boton {
-            padding: 18px 44px;
-            font-size: 1.2rem;
+        form {
+            background: rgba(255,255,255,0.15);
+            padding: 32px 40px;
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.20);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-width: 280px;
+            max-width: 340px;
+        }
+        label {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            text-shadow: 1px 1px 6px #222;
+        }
+        input[type="text"], input[type="email"] {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            outline: none;
+        }
+        input[type="submit"] {
+            padding: 14px 0;
+            font-size: 1.1rem;
             background: linear-gradient(90deg,#3fa1f4,#005bea);
             border: none;
             border-radius: 30px;
@@ -51,70 +76,29 @@
             box-shadow: 0 4px 14px rgba(0,0,0,0.25);
             transition: background 0.3s, transform 0.2s;
             font-weight: bold;
-            margin-bottom: 30px;
+            margin-top: 8px;
         }
-        .boton:hover {
+        input[type="submit"]:hover {
             background: linear-gradient(90deg,#005bea,#3fa1f4);
-            transform: translateY(-3px) scale(1.04);
-        }
-        .contador {
-            background: rgba(255,255,255,0.15);
-            color: #fff;
-            font-size: 1.1rem;
-            padding: 12px 30px;
-            border-radius: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
-            margin-top: 20px;
-            text-shadow: 1px 1px 6px #222;
+            transform: translateY(-2px) scale(1.03);
         }
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
-            .boton { font-size: 1rem; padding: 14px 24px; }
-            .contador { font-size: 1rem; padding: 10px 16px; }
+            form { padding: 20px 12px; }
         }
     </style>
 </head>
 <body>
     <div class="overlay"></div>
     <div class="container">
-        <h1>Bienvenido a Mi Página</h1>
-        <button class="boton" onclick="window.location.href='https://www.ejemplo.com';">Ir a otra página</button>
-        <div class="contador" id="contador-visitas">
-            Cargando visitas...
-        </div>
+        <h1>Contacto</h1>
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo" required>
+            <input type="submit" value="Enviar">
+        </form>
     </div>
-    <!-- Música de fondo -->
-    <audio id="musica-fondo" src="" autoplay loop></audio>
-    <script>
-        // Contador de visitas estático por usuario (detecta una vez por visita/browser)
-        // Utiliza localStorage para guardar si ya visitó
-        const contadorElement = document.getElementById('contador-visitas');
-        const STORAGE_KEY = "mi_pagina_visitada";
-        const CONTADOR_KEY = "mi_pagina_contador";
-
-        function getVisitas() {
-            return parseInt(localStorage.getItem(CONTADOR_KEY) || "0", 10);
-        }
-
-        function setVisitas(n) {
-            localStorage.setItem(CONTADOR_KEY, n + "");
-        }
-
-        window.onload = function() {
-            let visitada = localStorage.getItem(STORAGE_KEY);
-            let visitas = getVisitas();
-
-            if (!visitada) {
-                visitas += 1;
-                setVisitas(visitas);
-                localStorage.setItem(STORAGE_KEY, "true");
-            }
-            contadorElement.textContent = `Visitas a esta página en este navegador: ${visitas}`;
-        };
-
-        // Autoplay fix para algunos navegadores móviles: inicia música tras interacción
-        const musica = document.getElementById('musica-fondo');
-        document.body.addEventListener('click', () => { musica.play().catch(()=>{}); }, { once: true });
-    </script>
 </body>
 </html>
