@@ -2,64 +2,112 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página de felicitación por tu graduación. ¡Celebra tus logros!">
     <title>¡Feliz Graduación!</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: #f1f1f7;
+            background: linear-gradient(120deg, #f1f1f7 60%, #e6dffd 100%);
             color: #333;
             text-align: center;
             margin: 0;
             padding: 0;
         }
-        .graduation-banner {
+        header {
             background: #7159c1;
             color: #fff;
-            padding: 40px 0 20px 0;
+            padding: 50px 0 30px 0;
+            box-shadow: 0 4px 10px 0 rgba(113, 89, 193, 0.1);
         }
         .cap {
-            font-size: 60px;
+            font-size: 70px;
             margin-bottom: 20px;
+            animation: bounce 1.5s infinite alternate;
         }
-        .content {
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
+        }
+        main {
             padding: 40px 20px;
+        }
+        .mensaje {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
         }
         .btn {
             background: #4caf50;
             color: white;
-            padding: 14px 32px;
+            padding: 16px 36px;
             border: none;
             border-radius: 5px;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 25px;
+            box-shadow: 0 2px 5px rgba(76, 175, 80, 0.1);
+            transition: background 0.3s, transform 0.2s;
         }
         .btn:hover {
             background: #388e3c;
+            transform: scale(1.05);
+        }
+        .galeria {
+            margin: 40px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+        .galeria img {
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         footer {
-            margin-top: 40px;
-            font-size: 14px;
+            margin-top: 50px;
+            font-size: 15px;
             color: #888;
+            background: none;
+            padding: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .galeria img { width: 100px; height: 70px; }
+            main { padding: 25px 8px; }
         }
     </style>
 </head>
 <body>
-    <div class="graduation-banner">
+    <header>
         <div class="cap">🎓</div>
         <h1>¡Felicidades por tu Graduación!</h1>
         <p>Hoy celebramos tus logros y el comienzo de una nueva etapa.</p>
-    </div>
-    <div class="content">
-        <h2>Mensaje especial</h2>
-        <p>
-            Este es un día para recordar todo tu esfuerzo, dedicación y perseverancia.<br>
-            ¡Que el futuro esté lleno de éxitos y nuevas oportunidades!
-        </p>
-        <button class="btn" onclick="alert('¡Sigue brillando!')">¡Celebra!</button>
-    </div>
+    </header>
+    <main>
+        <section>
+            <h2>Mensaje especial</h2>
+            <p class="mensaje">
+                Este es un día para recordar todo tu esfuerzo, dedicación y perseverancia.<br>
+                ¡Que el futuro esté lleno de éxitos y nuevas oportunidades!
+            </p>
+            <button class="btn" onclick="alert('¡Sigue brillando!')">¡Celebra!</button>
+        </section>
+        <!-- Galería de fotos, puedes reemplazar los src por tus imágenes reales -->
+        <section class="galeria">
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="Foto de graduación 1">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Foto de graduación 2">
+            <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="Foto de graduación 3">
+        </section>
+        <section>
+            <h3>Comparte tu alegría</h3>
+            <a class="btn" style="background:#1877f2" href="https://www.facebook.com/sharer/sharer.php?u=https://tu-pagina.com" target="_blank">Compartir en Facebook</a>
+        </section>
+    </main>
     <footer>
-        Creado con cariño para la promoción 2025.
+        Creado con cariño para la promoción 2025.<br>
+        &copy; 2025 emi1906
     </footer>
 </body>
 </html>
