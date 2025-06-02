@@ -102,6 +102,28 @@
             color: #b893b6;
             padding: 20px 0;
         }
+        /* --- ESTRELLITAS PLATEADAS --- */
+        .silver-star {
+            position: fixed;
+            top: -30px;
+            color: #dbe6ea;
+            font-size: 17px;
+            opacity: 0.88;
+            pointer-events: none;
+            z-index: 100;
+            filter: drop-shadow(0 0 7px #b8bbc7);
+            animation: fall-silver 4.2s linear infinite, silver-sparkle 2s infinite alternate;
+        }
+        @keyframes fall-silver {
+            to {
+                top: 110vh;
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        @keyframes silver-sparkle {
+            0% { opacity: 0.7; text-shadow: 0 0 8px #e1e3e6;}
+            100% { opacity: 1; text-shadow: 0 0 18px #fff, 0 0 8px #dbe6ea;}
+        }
         @media (max-width: 600px) {
             main { padding: 20px 7px; }
             .mensaje { padding: 14px 6px 10px 6px; font-size: 1.05rem;}
@@ -131,15 +153,37 @@
     </header>
     <main>
         <div class="mensaje">
-            ¡Eres luz en el camino de quienes te rodean!<br>
-            Hoy celebramos tu dedicación, tus sueños y la persona increíble que eres.<br>
-            Que nunca falte la ilusión y que cada meta alcanzada sea solo el inicio de algo aún más grande.<br>
-            <b>¡Felicidades, graduado/a!</b>
+            ¡ERES UN RAYITO DE LUZ EN  TU  CAMINO DE QUIENES TE RODEAN !<br>
+             El DIA DE HOY CELEBRAMOS TU DEDICACION, TUS EMPEÑOS Y ESA GRAN PERSONA Y INCREIBLE QUE ERES.<br>
+            QUE NUNCA TE FALTE LA ILUSION Y QUE CADA META ALCANZADA SEA EL INICIO DE ALGO AUN MAS GRANDE .<br>
+            <b>¡FELICIDADES, GRADUADA/O!</b>
         </div>
         <a class="btn" href="index.html">Volver a la página principal</a>
     </main>
     <footer>
         Con todo mi cariño, siempre creyendo en ti.<br>
     </footer>
+    <!-- Script de Estrellitas Plateadas -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const NUM_SILVER_STARS = 38; // Puedes aumentar o disminuir la cantidad
+        const starShapes = ['★', '✦', '✧', '✩', '✪'];
+        for (let i = 0; i < NUM_SILVER_STARS; i++) {
+            const star = document.createElement('span');
+            star.className = 'silver-star';
+            star.textContent = starShapes[Math.floor(Math.random() * starShapes.length)];
+            // Posición horizontal aleatoria
+            star.style.left = Math.random() * 100 + 'vw';
+            // Tamaño aleatorio
+            star.style.fontSize = (13 + Math.random() * 14) + 'px';
+            // Diferente velocidad y retraso de animación
+            const duration = 3.5 + Math.random() * 2.3;
+            const delay = Math.random() * 4;
+            star.style.animationDuration = `${duration}s, 2s`;
+            star.style.animationDelay = `${delay}s, ${delay / 2}s`;
+            document.body.appendChild(star);
+        }
+    });
+    </script>
 </body>
 </html>
