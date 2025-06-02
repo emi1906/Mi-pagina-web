@@ -5,61 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Página de felicitación por tu graduación. ¡Celebra tus logros!">
     <title>¡Feliz Graduado!</title>
+    <!-- Fuente elegante en mayúsculas -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Cinzel', serif;
             min-height: 100vh;
-            background: linear-gradient(120deg, #f8f8f8, #c0c0c0, #ffffff, #e0e0e0, #c0c0c0);
+            background: linear-gradient(120deg, #FFD700 0%, #FFFBEA 25%, #C0C0C0 60%, #FFFFFF 100%);
             background-size: 400% 400%;
             animation: fondoAnimado 10s ease-in-out infinite;
-            color: black;
+            color: #B8860B;
             text-align: center;
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Para estrellitas */
+            position: relative;
+            letter-spacing: 1.5px;
         }
         @keyframes fondoAnimado {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
+        .estrellas {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .estrella {
+            position: absolute;
+            width: 8px; height: 8px;
+            background: radial-gradient(circle, #FFF 60%, #FFD700 80%, #C0C0C0 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 8px 2px #fff8, 0 0 16px 2px #FFD70088;
+            opacity: 0.9;
+            animation: moverEstrella linear infinite;
+        }
+        @keyframes moverEstrella {
+            0% {
+                transform: translateY(0) scale(0.8) rotate(0deg);
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) scale(1.2) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
         header {
-            color: black;
+            color: #B8860B;
             padding: 50px 0 30px 0;
             box-shadow: 0 4px 10px 0 rgba(113, 89, 193, 0.1);
+            background: rgba(255,255,255,0.70);
+            position: relative;
+            z-index: 2;
         }
         .cap {
             font-size: 70px;
             margin-bottom: 20px;
             animation: bounce 1.5s infinite alternate;
+            color: #FFD700;
+            text-shadow: 0 0 12px #FFF, 0 0 24px #C0C0C0;
         }
         @keyframes bounce {
             0% { transform: translateY(0); }
             100% { transform: translateY(-15px); }
         }
+        h1, .mensaje, .btn, footer {
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+        }
+        h1 {
+            font-size: 2.7em;
+            margin: 0 0 10px 0;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
         main {
             padding: 40px 20px;
+            z-index: 2;
+            position: relative;
         }
         .mensaje {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 30px;
+            background: linear-gradient(90deg, #FFFDE4 60%, #FFD700 100%);
+            border-radius: 8px;
+            padding: 18px 10px;
+            color: #866400;
+            box-shadow: 0 1px 8px #FFD70033;
+            font-weight: 700;
         }
         .btn {
-            background: #4caf50;
-            color: black;
+            background: linear-gradient(90deg, #FFD700 60%, #C0C0C0 100%);
+            color: #866400;
             padding: 16px 36px;
             border: none;
             border-radius: 5px;
             font-size: 20px;
             cursor: pointer;
             margin-top: 25px;
-            box-shadow: 0 2px 5px rgba(76, 175, 80, 0.1);
-            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 2px 5px #FFD70055;
+            transition: background 0.3s, transform 0.2s, color 0.2s;
             text-decoration: none;
             display: inline-block;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
         .btn:hover {
-            background: #388e3c;
-            transform: scale(1.05);
+            background: linear-gradient(90deg, #C0C0C0 60%, #FFD700 100%);
+            color: #B8860B;
+            transform: scale(1.08);
         }
         .galeria {
             margin: 40px 0;
@@ -73,22 +132,30 @@
             height: 140px;
             object-fit: cover;
             border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px #FFD70044;
+            border: 2px solid #FFD700;
+            background: #FFF;
         }
         footer {
             margin-top: 50px;
             font-size: 15px;
-            color: #888;
+            color: #B8860B;
             background: none;
             padding: 20px 0;
+            z-index: 2;
+            position: relative;
+            font-weight: 700;
+            letter-spacing: 2px;
         }
         @media (max-width: 600px) {
             .galeria img { width: 100px; height: 70px; }
             main { padding: 25px 8px; }
+            h1 { font-size: 1.5em; }
         }
     </style>
 </head>
 <body>
+    <div class="estrellas"></div>
     <header>
         <div class="cap">🎓</div>
         <h1>¡Felicidades por tu Graduación!</h1>
@@ -111,5 +178,24 @@
     <footer>
         Creado con cariño y especialmente para ti.<br>
     </footer>
+    <script>
+        // Generar estrellitas animadas
+        const cont = document.querySelector('.estrellas');
+        const cantidad = 70; // Más cantidad para más estrellitas
+        for (let i = 0; i < cantidad; i++) {
+            const estrella = document.createElement('div');
+            estrella.classList.add('estrella');
+            const size = Math.random() * 7 + 4;
+            estrella.style.width = estrella.style.height = size + 'px';
+            estrella.style.left = (Math.random() * 100) + 'vw';
+            estrella.style.top = (Math.random() * -100) + 'vh';
+            estrella.style.opacity = 0.5 + Math.random() * 0.5;
+            const duracion = 6 + Math.random() * 10;
+            estrella.style.animationDuration = duracion + 's';
+            estrella.style.animationDelay = (-Math.random() * duracion) + 's';
+            cont.appendChild(estrella);
+        }
+    </script>
 </body>
 </html>
+        
