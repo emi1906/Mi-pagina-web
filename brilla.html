@@ -3,117 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Sigue Brillando!</title>
+    <meta name="description" content="Página de felicitación por tu graduación. ¡Celebra tus logros!">
+    <title>¡Feliz Graduado!</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(120deg, #e6dffd 60%, #f1f1f7 100%);
-            color: #333;
+            background: linear-gradient(120deg, #f1f1f7 60%, #e6dffd 100%);
+            color: black;
             text-align: center;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            justify-content: center;
         }
-        .mensaje-brilla {
-            margin-top: 80px;
-            font-size: 2rem;
-            background: #fff3cd;
-            display: inline-block;
-            padding: 30px 50px;
-            border-radius: 15px;
-            box-shadow: 0 2px 10px rgba(113,89,193,0.09);
+        header {
+            color: black;
+            padding: 50px 0 30px 0;
+            box-shadow: 0 4px 10px 0 rgba(113, 89, 193, 0.1);
         }
-        .btn-volver {
-            margin-top: 40px;
-            display: inline-block;
-            text-decoration: none;
-            background: #7159c1;
-            color: white;
-            padding: 14px 36px;
-            border-radius: 7px;
-            font-size: 18px;
-            transition: background 0.3s, color 0.3s;
+        .cap {
+            font-size: 70px;
+            margin-bottom: 20px;
+            animation: bounce 1.5s infinite alternate;
         }
-        .btn-volver:hover {
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
+        }
+        main {
+            padding: 40px 20px;
+        }
+        .mensaje {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        .btn {
             background: #4caf50;
-            color: #222;
+            color: black;
+            padding: 16px 36px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 25px;
+            box-shadow: 0 2px 5px rgba(76, 175, 80, 0.1);
+            transition: background 0.3s, transform 0.2s;
+            text-decoration: none;
+            display: inline-block;
         }
-        /* Estilos para los nuevos controles */
-        .extra-controls {
-            margin-top: 40px;
+        .btn:hover {
+            background: #388e3c;
+            transform: scale(1.05);
+        }
+        .galeria {
+            margin: 40px 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
         }
-        .audio-player {
-            margin-top: 10px;
+        .galeria img {
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-        .color-picker, .image-picker {
-            margin: 5px 0;
+        footer {
+            margin-top: 50px;
+            font-size: 15px;
+            color: #888;
+            background: none;
+            padding: 20px 0;
+        }
+        @media (max-width: 600px) {
+            .galeria img { width: 100px; height: 70px; }
+            main { padding: 25px 8px; }
         }
     </style>
 </head>
 <body>
-    <div class="mensaje-brilla">
-        ¡Sigue brillando y conquistando tus sueños! 🌟<br>
-        ¡El mundo está lleno de oportunidades para ti!
-    </div>
-    <a class="btn-volver" href="index.html">Volver a la página de graduación</a>
-
-    <!-- CONTROLES EXTRA -->
-    <div class="extra-controls">
-        <!-- Audio -->
-        <div>
-            <label for="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3">Pon tu música favorita:</label>
-            <input type="file" id="audioInput" accept="audio/*">
-            <audio id="audioPlayer" class="audio-player" controls style="display:none;"></audio>
+    <header>
+        <div class="cap">🎓</div>
+        <h1>¡Felicidades por tu Graduación!</h1>
+        <!-- Audio sin controles, autoplay y loop -->
+        <audio src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay loop>
+            Tu navegador no soporta audio HTML5.
+        </audio>
+    </header>
+    <main>
+        <div class="mensaje">
+            ¡Has logrado una meta importante! Que este sea solo el principio de muchos éxitos más.
         </div>
-        <!-- Cambiar fondo -->
-        <div>
-            <label for="colorInput">Elige un color de fondo:</label>
-            <input type="color" id="colorInput" class="color-picker">
-        </div>
-        <div>
-            <label for="imageInput">O elige una imagen de fondo:</label>
-            <input type="file" id="imageInput" class="image-picker" accept="image/*">
-        </div>
-    </div>
-    <!-- FIN CONTROLES EXTRA -->
-
+        <!-- Galería de fotos (puedes comentar esta sección si NO quieres que se muestre) -->
+        <section class="galeria">
+            <img src="https://globosfloresyfiestas.com/wp-content/uploads/2021/06/graduacion.jpg" alt="Graduación 1">
+            <img src="https://media.istockphoto.com/id/1386452720/es/foto/las-manos-de-los-estudiantes-que-se-grad%C3%BAan-lanzando-gorras-de-graduaci%C3%B3n-al-aire.jpg?s=612x612&w=0&k=20&c=klqzB3d3OL-X4Ad7eN0hJ1g2cR08qtPABNUCrevA5dk=" alt="Graduación 2">
+            <img src="https://media.istockphoto.com/id/2164232127/es/foto/manos-recortadas-de-gente-lanzando-morteros-contra-el-cielo-despejado.jpg?s=612x612&w=0&k=20&c=Q23QU-d-ixhPauv8ZIqNkT3Z889Mnfnv7foME8DesdE=" alt="Graduación 3">
+        </section>
+        <a class="btn" href="brilla.html">Mensaje especial</a>
+    </main>
+    <footer>
+        Creado con cariño y especialmente para ti.<br>
+    </footer>
+    <!-- Script para cambiar el fondo automáticamente sin controles -->
     <script>
-    // Reproducir audio
-    const audioInput = document.getElementById('audioInput');
-    const audioPlayer = document.getElementById('audioPlayer');
-    audioInput.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const url = URL.createObjectURL(file);
-            audioPlayer.src = url;
-            audioPlayer.style.display = 'block';
-            audioPlayer.play();
-        }
-    });
-
-    // Cambiar color de fondo
-    const colorInput = document.getElementById('colorInput');
-    colorInput.addEventListener('input', function() {
-        document.body.style.background = this.value;
-    });
-
-    // Cambiar imagen de fondo
-    const imageInput = document.getElementById('imageInput');
-    imageInput.addEventListener('change', function() {
-        const file = this.files[0];
-        if (file) {
-            const url = URL.createObjectURL(file);
-            document.body.style.background = `url('${url}') no-repeat center center fixed`;
-            document.body.style.backgroundSize = 'cover';
-        }
-    });
+        const fondos = [
+            "linear-gradient(120deg, #f1f1f7 60%, #e6dffd 100%)",
+            "linear-gradient(120deg, #fee2f8 60%, #d4fc79 100%)",
+            "linear-gradient(120deg, #f9d423 60%, #ff4e50 100%)",
+            "linear-gradient(120deg, #43cea2 60%, #185a9d 100%)"
+        ];
+        let idx = 0;
+        setInterval(() => {
+            document.body.style.background = fondos[idx];
+            idx = (idx + 1) % fondos.length;
+        }, 5000); // Cambia cada 5 segundos
     </script>
 </body>
 </html>
+     
+        
+    
+
