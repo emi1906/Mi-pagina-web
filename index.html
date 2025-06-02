@@ -8,11 +8,19 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(120deg, #f1f1f7 60%, #e6dffd 100%);
+            min-height: 100vh;
+            background: linear-gradient(120deg, #f8f8f8, #c0c0c0, #ffffff, #e0e0e0, #c0c0c0);
+            background-size: 400% 400%;
+            animation: fondoAnimado 10s ease-in-out infinite;
             color: black;
             text-align: center;
             margin: 0;
             padding: 0;
+        }
+        @keyframes fondoAnimado {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         header {
             color: black;
@@ -84,13 +92,12 @@
     <header>
         <div class="cap">🎓</div>
         <h1>¡Felicidades por tu Graduación!</h1>
-        <audio src="Lady Gaga Bruno Mars - Die With A Smile (Sub. Español Lyrics) video oficial.mp3" autoplay loop>
+        <audio src="LadyGaga_BrunoMars_DieWithASmile.mp3" autoplay loop>
             Tu navegador no soporta audio HTML5.
         </audio>
     </header>
     <main>
-        <div class="mensaje" id="mensajeEspecial"></div>
-</script>
+        <div class="mensaje" id="mensajeEspecial">
             ¡Has logrado una meta importante! Que este sea solo el principio de muchos éxitos más.
         </div>
         <!-- Galería de fotos -->
@@ -106,4 +113,3 @@
     </footer>
 </body>
 </html>
-           
