@@ -89,7 +89,11 @@
         </audio>
     </header>
     <main>
-        <div class="mensaje">
+        <div class="mensaje" id="mensajeEspecial"></div>
+<script>
+    var mensaje = localStorage.getItem("mensajeEspecial") || "No hay mensaje especial.";
+    document.getElementById("mensajeEspecial").textContent = mensaje;
+</script>
             ¡Has logrado una meta importante! Que este sea solo el principio de muchos éxitos más.
         </div>
         <!-- Galería de fotos -->
