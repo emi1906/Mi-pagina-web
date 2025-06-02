@@ -41,6 +41,20 @@
             background: #4caf50;
             color: #222;
         }
+        /* Estilos para los nuevos controles */
+        .extra-controls {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        .audio-player {
+            margin-top: 10px;
+        }
+        .color-picker, .image-picker {
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
@@ -49,5 +63,57 @@
         ¡El mundo está lleno de oportunidades para ti!
     </div>
     <a class="btn-volver" href="index.html">Volver a la página de graduación</a>
+
+    <!-- CONTROLES EXTRA -->
+    <div class="extra-controls">
+        <!-- Audio -->
+        <div>
+            <label for="audioInput">Pon tu música favorita:</label>
+            <input type="file" id="audioInput" accept="audio/*">
+            <audio id="audioPlayer" class="audio-player" controls style="display:none;"></audio>
+        </div>
+        <!-- Cambiar fondo -->
+        <div>
+            <label for="colorInput">Elige un color de fondo:</label>
+            <input type="color" id="colorInput" class="color-picker">
+        </div>
+        <div>
+            <label for="imageInput">O elige una imagen de fondo:</label>
+            <input type="file" id="imageInput" class="image-picker" accept="image/*">
+        </div>
+    </div>
+    <!-- FIN CONTROLES EXTRA -->
+
+    <script>
+    // Reproducir audio
+    const audioInput = document.getElementById('audioInput');
+    const audioPlayer = document.getElementById('audioPlayer');
+    audioInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            audioPlayer.src = url;
+            audioPlayer.style.display = 'block';
+            audioPlayer.play();
+        }
+    });
+
+    // Cambiar color de fondo
+    const colorInput = document.getElementById('colorInput');
+    colorInput.addEventListener('input', function() {
+        document.body.style.background = this.value;
+    });
+
+    // Cambiar imagen de fondo
+    const imageInput = document.getElementById('imageInput');
+    imageInput.addEventListener('change', function() {
+        const file = this.files[0];
+        if (file) {
+            const url = URL.createObjectURL(file);
+            document.body.style.background = `url('${url}') no-repeat center center fixed`;
+            document.body.style.backgroundSize = 'cover';
+        }
+    });
+    </script>
 </body>
 </html>
