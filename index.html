@@ -18,7 +18,7 @@
             text-align: center;
             margin: 0;
             padding: 0;
-            overflow: hidden; /* Para estrellitas */
+            overflow: hidden;
             position: relative;
             letter-spacing: 1.5px;
         }
@@ -136,6 +136,33 @@
             border: 2px solid #FFD700;
             background: #FFF;
         }
+        .video-graduacion {
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+            position: relative;
+        }
+        .video-graduacion video {
+            width: 350px;
+            max-width: 90vw;
+            border: 3px solid #FFD700;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #FFD70055;
+        }
+        .video-graduacion .descripcion {
+            margin-top: 10px;
+            color: #866400;
+            font-weight: bold;
+            font-size: 1.1em;
+            background: rgba(255,253,228,0.8);
+            padding: 6px 20px;
+            border-radius: 8px;
+        }
+        #btnVolver {
+            display: none;
+        }
         footer {
             margin-top: 50px;
             font-size: 15px;
@@ -151,6 +178,7 @@
             .galeria img { width: 100px; height: 70px; }
             main { padding: 25px 8px; }
             h1 { font-size: 1.5em; }
+            .video-graduacion video { width: 98vw; }
         }
     </style>
 </head>
@@ -166,15 +194,24 @@
         </div>
         <a class="btn" href="brilla.html" id="btn-mensaje" target="_blank" style="display:inline-block;">Mensaje especial</a>
         
-        <!-- Galería de fotos. Para agregar una imagen, copia otra línea <img> y cambia la URL y el alt -->
         <section class="galeria">
-            <!-- Agrega aquí tus fotos de graduación -->
             <img src="https://globosfloresyfiestas.com/wp-content/uploads/2021/06/graduacion.jpg" alt="Graduación 1">
             <img src="https://media.istockphoto.com/id/1386452720/es/foto/las-manos-de-los-estudiantes-que-se-grad%C3%BAan-lanzando-gorras-de-graduaci%C3%B3n-al-aire.jpg?s=612x612&w=0&k=20&c=klqzB3d3OL-X4Ad7eN0hJ1g2cR08qtPABNUCrevA5dk=" alt="Graduación 2">
             <img src="https://media.istockphoto.com/id/2164232127/es/foto/manos-recortadas-de-gente-lanzando-morteros-contra-el-cielo-despejado.jpg?s=612x612&w=0&k=20&c=Q23QU-d-ixhPauv8ZIqNkT3Z889Mnfnv7foME8DesdE=" alt="Graduación 3">
-            <!-- EJEMPLO para agregar otra foto:
-            <img src="URL_DE_TU_IMAGEN" alt="Mi foto especial">
-            -->
+        </section>
+
+        <!-- Video de graduación -->
+        <section class="video-graduacion">
+            <video id="miVideoGraduacion" controls poster="https://img.freepik.com/vector-premium/graduacion-diploma-certificado-fondo-bonito-diseno-baner_527952-120.jpg">
+                <source src="graduacion.mp4" type="video/mp4">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+            <div class="descripcion">
+                ¡Revive el momento especial de tu graduación!
+            </div>
+            <a id="btnVolver" href="otra-pagina.html" class="btn" style="margin-top:20px;">
+                DISFRUTA TUS SUEÑOS
+            </a>
         </section>
     </main>
     <footer>
@@ -183,7 +220,7 @@
     <script>
         // Generar estrellitas animadas
         const cont = document.querySelector('.estrellas');
-        const cantidad = 70; // Más cantidad para más estrellitas
+        const cantidad = 70;
         for (let i = 0; i < cantidad; i++) {
             const estrella = document.createElement('div');
             estrella.classList.add('estrella');
@@ -196,7 +233,13 @@
             estrella.style.animationDuration = duracion + 's';
             estrella.style.animationDelay = (-Math.random() * duracion) + 's';
             cont.appendChild(estrella);
-          }
+        }
+        // Mostrar botón al terminar el video
+        const video = document.getElementById('miVideoGraduacion');
+        const btnVolver = document.getElementById('btnVolver');
+        video.addEventListener('ended', function() {
+            btnVolver.style.display = 'inline-block';
+        });
     </script>
 </body>
 </html>
