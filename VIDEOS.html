@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Video de Graduación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cinzel', serif;
+            background: linear-gradient(120deg, #FFD700 0%, #FFFBEA 25%, #C0C0C0 60%, #FFFFFF 100%);
+            color: #B8860B;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .video-graduacion video {
+            width: 350px;
+            max-width: 90vw;
+            border: 3px solid #FFD700;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #FFD70055;
+        }
+        .descripcion {
+            margin-top: 10px;
+            color: #866400;
+            font-weight: bold;
+            font-size: 1.1em;
+            background: rgba(255,253,228,0.8);
+            padding: 6px 20px;
+            border-radius: 8px;
+        }
+        .btn {
+            background: linear-gradient(90deg, #FFD700 60%, #C0C0C0 100%);
+            color: #866400;
+            padding: 16px 36px;
+            border: none;
+            border-radius: 5px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 25px;
+            box-shadow: 0 2px 5px #FFD70055;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #C0C0C0 60%, #FFD700 100%);
+            color: #B8860B;
+            transform: scale(1.08);
+        }
+    </style>
+</head>
+<body>
+    <section class="video-graduacion">
+        <video id="miVideoGraduacion" controls poster="https://img.freepik.com/vector-premium/graduacion-diploma-certificado-fondo-bonito-diseno-baner_527952-120.jpg">
+            <source src="VID-20250604-WA0019.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+        </video>
+        <div class="descripcion">
+            ¡Revive el momento especial de tu graduación!
+        </div>
+        <a href="index.html" class="btn">Volver a la página principal</a>
+    </section>
+</body>
+</html>
